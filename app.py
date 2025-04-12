@@ -23,7 +23,7 @@ import re
 def fetch_poster(movie_name):
     api_key = "f68a8535115a5a91aad0becf0243e03e"
     
-    # Clean title: remove year like " (1995)"
+   
     cleaned_title = re.sub(r"\s+\(\d{4}\)", "", movie_name).strip()
 
     url = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&query={cleaned_title}"
@@ -38,7 +38,7 @@ def fetch_poster(movie_name):
     return "https://via.placeholder.com/300x450?text=No+Image"
 
 
-# Recommendation logic
+
 def recommend(movie_name, top_n=20):
     try:
         idx = movies[movies['title'].str.contains(movie_name, case=False, na=False)].index[0]
@@ -58,7 +58,6 @@ def recommend(movie_name, top_n=20):
 
     return titles, posters
 
-# UI
 movie_input = st.text_input("🔍 Enter a movie name", placeholder="e.g., Titanic")
 
 if movie_input:
